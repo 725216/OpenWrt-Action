@@ -5,15 +5,15 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/padavanonly/immortalwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: OK1.config
-  DIY_P1_SH: DIY-lean.sh
-  DIY_P2_SH: DIY-2.sh
+  CONFIG_FILE: lean.config
+  DIY_P1_SH: DIY-1.sh
+  DIY_P2_SH: DIY-lean.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -117,14 +117,8 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-        
-    - name: Upload bin directory
-      uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-      with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin
-        
+      
+
     - name: 打包上传固件
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
@@ -132,16 +126,23 @@ jobs:
         name: OpenWrt-Mini${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
+
     - name: 创建发布标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "OpenWrt-lean_ Zbtlink ZBT-WE1326 （支持ipv6）" >> release.txt
+        echo "ImmortalWrt_ Zbtlink ZBT-WE1326 （支持ipv6）" >> release.txt
         echo "默认地址：192.168.123.1" >> release.txt
         echo "默认密码：password" >> release.txt
-        echo "插件清单：openclash.vssr等" >> release.txt
+        echo "插件清单：vssr，OpenClash等" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
@@ -150,11 +151,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -lean版
+        name: ${{ env.FILE_TIME }} -immortalwrt版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
-
+        
+        
     - name: 清理编译流程
       uses: Mattraks/delete-workflow-runs@main
       with:
