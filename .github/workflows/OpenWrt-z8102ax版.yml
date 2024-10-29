@@ -1,4 +1,4 @@
-name:  OpenWrt-lean版
+name:  OpenWrt-z8102ax版
 
 on:
   repository_dispatch:
@@ -8,9 +8,9 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: lean.config
+  CONFIG_FILE: z8102ax.config
   DIY_P1_SH: DIY-1.sh
-  DIY_P2_SH: DIY-lean.sh
+  DIY_P2_SH: DIY-z8102ax.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: false
