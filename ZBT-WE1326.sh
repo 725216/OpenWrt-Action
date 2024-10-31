@@ -19,3 +19,4 @@ sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.con
 #echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/messense/aliyundrive-webdav.git package/aliyundrive-webdav
+git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
