@@ -1,4 +1,4 @@
-name:  OpenWrt-immortalwrt版
+name:  OpenWrt-ZBT-WE1326版
 
 on:
   repository_dispatch:
