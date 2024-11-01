@@ -3,7 +3,7 @@
 
 
 # 1-添加 ShadowSocksR Plus+ 插件
-sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # 2-添加 PowerOff 关机插件
 git clone https://github.com/WukongMaster/luci-app-poweroff.git package/luci-app-poweroff
@@ -24,3 +24,5 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 rm -rf feeds/luci/applications/luci-app-vssr
 git clone https://github.com/MilesPoupart/luci-app-vssr.git package/luci-app-vssr
+rm -rf feeds/luci/applications/luci-app-ssr-plus
+git clone https://github.com/fw876/helloworld.git package/helloworld
