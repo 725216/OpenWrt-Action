@@ -26,3 +26,4 @@ rm -rf feeds/luci/applications/luci-app-vssr
 git clone https://github.com/MilesPoupart/luci-app-vssr.git package/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 git clone https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
