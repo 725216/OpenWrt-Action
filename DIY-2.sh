@@ -29,4 +29,4 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 
 rm -rf feeds/packages/lang/golang
 
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
