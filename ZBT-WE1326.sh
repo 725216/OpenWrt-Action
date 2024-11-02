@@ -21,6 +21,7 @@ sed -i 's|/padavanonly/packages|/725216/packages|' feeds.conf.default
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/messense/aliyundrive-webdav.git package/aliyundrive-webdav
 git clone https://github.com/sbwml/luci-app-alist.git package/luci-app-alist
+rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-vssr
 git clone https://github.com/MilesPoupart/luci-app-vssr.git package/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-ssr-plus
