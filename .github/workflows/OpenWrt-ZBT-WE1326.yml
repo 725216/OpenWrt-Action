@@ -1,19 +1,19 @@
-name:  OpenWrt-基础版
+name:  OpenWrt-ZBT-WE1326版
 
-on: 
+on:
+  repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 01 00 * * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/padavanonly/immortalwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: OK1.config
-  DIY_P1_SH: DIY-1.sh
+  CONFIG_FILE: ZBT-WE1326.config
+  DIY_P1_SH: ZBT-WE1326.sh
   DIY_P2_SH: DIY-2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  UPLOAD_BIN_DIR: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -118,24 +118,7 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
-    - name: 打包整理固件
-      id: organize
-      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      run: |
-        cd openwrt/bin/targets/*/*
-        rm -rf packages && mkdir packages
-        find -name "*esxi-flat.vmdk*" | xargs -i mv -f {} packages
-        find -name "*kernel.bin*" | xargs -i mv -f {} packages
-        find -name "*rootfs*" | xargs -i mv -f {} packages
-        find -name "*.manifest*" | xargs -i mv -f {} packages
-        find -name "*vmlinuz*" | xargs -i mv -f {} packages
-        find -name "*esxi.vmdk*" | xargs -i mv -f {} packages
-        find -name "*buildinfo*" | xargs -i mv -f {} packages
-        find -name "*json*" | xargs -i mv -f {} packages
-        find -name "*sha256sums*" | xargs -i mv -f {} packages
-        rm -rf packages
-        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-        echo "status=success" >> $GITHUB_OUTPUT
+
 
     - name: 打包上传固件
       uses: actions/upload-artifact@main
@@ -144,16 +127,23 @@ jobs:
         name: OpenWrt-Mini${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
+        
     - name: 创建发布标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "OpenWrt-Mini_ X86_64-基础版（支持ipv6）" >> release.txt
-        echo "默认地址：192.168.1.1" >> release.txt
-        echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+" >> release.txt
+        echo "ImmortalWrt_ Zbtlink ZBT-WE1326（支持ipv6）" >> release.txt
+        echo "默认地址：192.168.123.1" >> release.txt
+        echo "默认密码：password" >> release.txt
+        echo "插件清单：vssr,openclash等" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
@@ -162,7 +152,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -基础版
+        name: ${{ env.FILE_TIME }} -immortalwrt版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
