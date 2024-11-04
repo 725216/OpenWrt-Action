@@ -12,7 +12,7 @@ env:
   DIY_P1_SH: ZBT-WE1326.sh
   DIY_P2_SH: DIY-2.sh
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   UPLOAD_BIN_DIR: true
   TZ: Asia/Shanghai
 
