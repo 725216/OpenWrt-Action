@@ -1,9 +1,8 @@
-name:  OpenWrt-合集版
+name:  OpenWrt-ZBT-WE1326版
 
-on: 
+on:
+  repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 31 00 * * *
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
