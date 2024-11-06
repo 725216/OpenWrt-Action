@@ -3,7 +3,7 @@
 
 
 # 1-添加 ShadowSocksR Plus+ 插件
-# echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 
 # 2-添加 OpenClash 插件
 sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.conf.default
@@ -16,3 +16,6 @@ rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/xray-core
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/packages/net/xray-plugin
+git clone https://github.com/sbwml/luci-app-alist.git package/alist
+git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
