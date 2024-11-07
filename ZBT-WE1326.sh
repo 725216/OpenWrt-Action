@@ -14,10 +14,10 @@
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/packages/net/xray-core
-# rm -rf feeds/luci/applications/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/packages/net/xray-plugin
 git clone https://github.com/sbwml/luci-app-alist.git package/alist
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
 git clone https://github.com/fw876/helloworld.git package/hellowrld
-# git clone https://github.com/vernesong/OpenClash.git package/openclash
+git clone https://github.com/vernesong/OpenClash.git package/openclash
