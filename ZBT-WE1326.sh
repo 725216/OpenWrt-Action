@@ -1,23 +1,94 @@
-# 此脚本用处是：添加第三方插件
-#=======================================================================================================================
-
-
-# 1-添加 ShadowSocksR Plus+ 插件
-# echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-
-# 2-添加 OpenClash 插件
-# sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.conf.default
-
-# 3-添加 PassWall 插件
-# echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
-# echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
-rm -rf feeds/luci/applications/luci-app-ssr-plus
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/packages/net/xray-core
-rm -rf feeds/luci/applications/luci-app-openclash
-rm -rf feeds/packages/net/xray-plugin
-git clone https://github.com/sbwml/luci-app-alist.git package/alist
-git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
-git clone https://github.com/fw876/helloworld.git package/hellowrld
-git clone https://github.com/vernesong/OpenClash.git package/openclash
+CONFIG_TARGET_ramips=y
+CONFIG_TARGET_ramips_mt7621=y
+CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-we1326=y
+CONFIG_LIBCURL_COOKIES=y
+CONFIG_LIBCURL_CRYPTO_AUTH=y
+CONFIG_LIBCURL_FILE=y
+CONFIG_LIBCURL_FTP=y
+CONFIG_LIBCURL_HTTP=y
+CONFIG_LIBCURL_NGHTTP2=y
+CONFIG_LIBCURL_OPENSSL=y
+CONFIG_LIBCURL_PROXY=y
+CONFIG_LIBCURL_TFTP=y
+CONFIG_LIBCURL_THREADED_RESOLVER=y
+CONFIG_LIBCURL_TLS_SRP=y
+CONFIG_LIBCURL_UNIX_SOCKETS=y
+CONFIG_LIBSODIUM_MINIMAL=y
+CONFIG_PACKAGE_alist=m
+CONFIG_PACKAGE_automount=y
+CONFIG_PACKAGE_bash=m
+CONFIG_PACKAGE_ca-certificates=m
+CONFIG_PACKAGE_coreutils=m
+CONFIG_PACKAGE_coreutils-base64=m
+CONFIG_PACKAGE_coreutils-nohup=m
+CONFIG_PACKAGE_curl=m
+CONFIG_PACKAGE_ip-full=m
+CONFIG_PACKAGE_kmod-crypto-crc32c=y
+CONFIG_PACKAGE_kmod-fs-exfat=y
+CONFIG_PACKAGE_kmod-fs-ext4=y
+CONFIG_PACKAGE_kmod-fs-ntfs3=y
+CONFIG_PACKAGE_kmod-fs-vfat=y
+CONFIG_PACKAGE_kmod-lib-crc16=y
+CONFIG_PACKAGE_kmod-nls-cp437=y
+CONFIG_PACKAGE_kmod-nls-iso8859-1=y
+CONFIG_PACKAGE_kmod-nls-utf8=y
+CONFIG_PACKAGE_kmod-scsi-core=y
+CONFIG_PACKAGE_kmod-tun=m
+CONFIG_PACKAGE_kmod-usb-storage=y
+CONFIG_PACKAGE_kmod-usb-storage-extras=y
+CONFIG_PACKAGE_libblkid=y
+CONFIG_PACKAGE_libbpf=m
+CONFIG_PACKAGE_libcap=m
+CONFIG_PACKAGE_libcap-bin=m
+CONFIG_PACKAGE_libcap-bin-capsh-shell="/bin/sh"
+CONFIG_PACKAGE_libcurl=m
+CONFIG_PACKAGE_libelf=m
+CONFIG_PACKAGE_libev=m
+CONFIG_PACKAGE_libmaxminddb=m
+CONFIG_PACKAGE_libmbedtls=m
+CONFIG_PACKAGE_libncurses=m
+CONFIG_PACKAGE_libnghttp2=m
+CONFIG_PACKAGE_libpcre2=m
+CONFIG_PACKAGE_libreadline=m
+CONFIG_PACKAGE_libruby=m
+CONFIG_PACKAGE_libsodium=m
+CONFIG_PACKAGE_libudns=m
+CONFIG_PACKAGE_libyaml=m
+CONFIG_PACKAGE_lua-cjson=m
+CONFIG_PACKAGE_lua-maxminddb=m
+CONFIG_PACKAGE_luasocket=m
+CONFIG_PACKAGE_luci-app-alist=m
+CONFIG_PACKAGE_luci-app-openclash=m
+CONFIG_PACKAGE_luci-app-vssr=m
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Libev_Server=y
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray=y
+CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray_plugin=y
+CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=m
+CONFIG_PACKAGE_luci-app-openvpn=m
+CONFIG_PACKAGE_luci-i18n-openvpn-zh-cn=m
+CONFIG_PACKAGE_openvpn-openssl=m
+CONFIG_PACKAGE_ruby=m
+CONFIG_PACKAGE_ruby-bigdecimal=m
+CONFIG_PACKAGE_ruby-date=m
+CONFIG_PACKAGE_ruby-digest=m
+CONFIG_PACKAGE_ruby-enc=m
+CONFIG_PACKAGE_ruby-forwardable=m
+CONFIG_PACKAGE_ruby-pstore=m
+CONFIG_PACKAGE_ruby-psych=m
+CONFIG_PACKAGE_ruby-stringio=m
+CONFIG_PACKAGE_ruby-strscan=m
+CONFIG_PACKAGE_ruby-yaml=m
+CONFIG_PACKAGE_shadowsocks-libev-config=m
+CONFIG_PACKAGE_shadowsocks-libev-ss-local=m
+CONFIG_PACKAGE_shadowsocks-libev-ss-redir=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-check=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
+CONFIG_PACKAGE_simple-obfs-client=m
+CONFIG_PACKAGE_terminfo=m
+CONFIG_PACKAGE_unzip=m
+CONFIG_PACKAGE_xray-core=m
+CONFIG_PACKAGE_xray-plugin=m
+# CONFIG_PACKAGE_kmod-inet-diag is not set
+# CONFIG_PACKAGE_luci-compat is not set
