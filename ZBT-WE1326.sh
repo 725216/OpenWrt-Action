@@ -19,3 +19,5 @@ git clone https://github.com/WukongMaster/luci-theme-opentomcat.git package/luci
 #echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/MilesPoupart/luci-app-vssr.git package/luci-app-vssr
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+git clone https://github.com/fw876/helloworld.git package/helloworld
