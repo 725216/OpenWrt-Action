@@ -18,4 +18,4 @@ sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.con
 #echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
 #echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
-git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
+git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
