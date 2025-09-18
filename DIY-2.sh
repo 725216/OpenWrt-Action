@@ -10,4 +10,4 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-defaul
 
 # 3-设置管理地址
 sed -i 's/192.168.1.1/192.168.123.1/g' package/base-files/files/bin/config_generate
-rm -rf feeds/packages/luci/{oprnclash}
+rm -rf feeds/luci/applications/luci-app-openclash
