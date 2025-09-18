@@ -21,3 +21,4 @@ git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/MilesPoupart/luci-app-vssr.git package/luci-app-vssr
 rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
 git clone https://github.com/fw876/helloworld.git package/helloworld
+rm -rf feeds/luci/applications/luci-app-openclash
