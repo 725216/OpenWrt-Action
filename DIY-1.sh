@@ -20,3 +20,4 @@ sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.con
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
 git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
