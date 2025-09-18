@@ -10,7 +10,6 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-defaul
 
 # 3-设置管理地址
 sed -i 's/192.168.1.1/192.168.123.1/g' package/base-files/files/bin/config_generate
-rm -rf feeds/luci/applications/luci-app-openclash
 sudo apt install libfuse-dev
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
